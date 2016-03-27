@@ -104,7 +104,12 @@ public class ClubApplication {
 			e.printStackTrace();
 		}
     	
-        Booking testBooking = new Booking(searchMember, f, curDate, endDate);
+        try {
+			Booking testBooking = new Booking(searchMember, f, dateInString, endDateInString);
+		} catch (BadBookingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
         System.out.println("\n"+curDate.toString());
     }

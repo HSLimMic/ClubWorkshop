@@ -131,7 +131,7 @@ public class Club {
 		Facility bookFacility = getFacility(facilityName);
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-M-yyyy hh:mm");
-		
+		/*
 		Date curDate = null;
 		try {
 			curDate = dateFormat.parse(startDateInString);
@@ -147,8 +147,14 @@ public class Club {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		*/
 	
-		bookingArrayList.add(new Booking(bookMember, bookFacility, curDate, endDate));
+		try {
+			bookingArrayList.add(new Booking(bookMember, bookFacility, startDateInString, endDateInString));
+		} catch (BadBookingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }
