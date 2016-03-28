@@ -51,7 +51,34 @@ public class Booking {
 		member = bookMember;
 		facility = bookFacility;
 		startDate = curDate;
-		endDate = endDate;
+		this.endDate = endDate;
+		//return true;
+	}
+	
+	Booking(Member bookMember, Facility bookFacility, Date curDate, Date endDate) throws BadBookingException{
+		String error = null;
+		
+		//bookMember = null;
+		if(bookMember == null)
+			error = "No member specified";
+		
+		if(bookFacility == null)
+			error = "No facility specified";
+		
+		if (curDate == null)
+			error = "No start date specified";
+		
+		if (endDate == null)
+			error = "No end date specified";
+		
+		
+		if (error != null)
+			throw new BadBookingException(error);		
+		
+		member = bookMember;
+		facility = bookFacility;
+		startDate = curDate;
+		this.endDate = endDate;
 		//return true;
 	}
 	
@@ -61,11 +88,38 @@ public class Booking {
 	
 	public boolean Overlap(Booking checkBooking){
 		
-		//if (checkBooking.GetMember() == member);
-		if (checkBooking == this)		
-			return true;
-		else
-			return false;
+        boolean status = true;
+        if (this.facility != checkBooking.getFacility ()) {
+            status = false;
+        } else if (startDate.getTime() >= checkBooking.getEndDate().getTime()) {
+            status = false;
+        } else if (checkBooking.getStartDate().getTime() >= endDate.getTime()) {
+            status = false;
+        }
+        return (status);
+
+	}
+	
+    public Member getMember () {
+        return member;
+    }
+
+    public Facility getFacility () {
+        return facility;
+    }
+
+    public Date getStartDate () {
+        return startDate;
+    }
+
+    public Date getEndDate () {
+        return endDate;
+    }
+
+	@Override
+	public String toString() {
+		return "Booking [member=" + member + ", facility=" + facility + ", startDate=" + startDate + ", endDate="
+				+ endDate + "]";
 	}
 
 }

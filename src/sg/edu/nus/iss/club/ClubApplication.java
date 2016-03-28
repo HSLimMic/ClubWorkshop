@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class ClubApplication {
 
-    public static void main (String args[]) {
+    public static void main (String args[]) throws BadBookingException {
 
 
         Person member1, member2, member3;
@@ -104,14 +104,13 @@ public class ClubApplication {
 			e.printStackTrace();
 		}
     	
-        try {
-			Booking testBooking = new Booking(searchMember, f, dateInString, endDateInString);
-		} catch (BadBookingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		BookingRegister testBooking = new BookingRegister();
+		
+		testBooking.AddBookingRegister(f, searchMember, dateInString, endDateInString);
 
-        System.out.println("\n"+curDate.toString());
+        System.out.println("\n"+curDate.toString()+"\n\n");
+        
+        testBooking.AddBookingRegister(f, searchMember, dateInString, endDateInString);
     }
 
 }
