@@ -18,6 +18,15 @@ public class Booking {
 		if(bookMember == null)
 			error = "No member specified";
 		
+		if(bookFacility == null)
+			error = "No facility specified";
+		
+		if (dateInString == null)
+			error = "No start date specified";
+		
+		if (endDateInString == null)
+			error = "No end date specified";
+		
 		
 		if (error != null)
 			throw new BadBookingException(error);
